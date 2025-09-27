@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-backend-service
+spec:
+  selector:
+    app: kuber-test
+  ports:
+    - protocol: TCP
+      port: 8000           # Порт ПОДА
+      targetPort: 8080     # Порт СЕРВЕСА внутри пода
+  type: NodePort  #ClusterIP, NodePort
