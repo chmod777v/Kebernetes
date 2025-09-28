@@ -1,0 +1,6 @@
+
+container:
+  image: kuber-test
+  port: 8080
+
+replicaCount: 5

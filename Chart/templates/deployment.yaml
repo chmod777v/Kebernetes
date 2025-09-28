@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}-deployments
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ .Release.Name }}-kuber
+  template:
+    metadata:
+      labels:
+        app: {{ .Release.Name }}-kuber
+    spec:
+      containers:
+      - name: {{ .Release.Name }}-kuber-containers
+        image: {{ .Values.container.image }}
+        imagePullPolicy: Never
+        ports:
+        - containerPort: {{ .Values.container.port }}
+        readinessProbe: #готовность
+          httpGet:
+            path: /
+            port: {{ .Values.container.port }}
+          initialDelaySeconds: 1
+          periodSeconds: 2
+        livenessProbe: # жива ли пода
+          httpGet:
+            path: /
+            port: {{ .Values.container.port }}
+          initialDelaySeconds: 1
+          periodSeconds: 2
