@@ -10,4 +10,4 @@ spec:
       protocol: TCP
       port: 8000           # Порт ПОДА
       targetPort: 8080     # Порт СЕРВЕСА внутри пода
-  type: NodePort  #ClusterIP, NodePort
+  type: NodePort  #ClusterIP, NodePort, LoadBalancer
