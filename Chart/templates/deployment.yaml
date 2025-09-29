@@ -20,13 +20,13 @@ spec:
         - containerPort: {{ .Values.container.port }}
         readinessProbe: #готовность
           httpGet:
-            path: /
-            port: {{ .Values.container.port }}
+            path: {{ .Values.probe.path }}
+            port: {{ .Values.probe.port }}
           initialDelaySeconds: 1
           periodSeconds: 2
         livenessProbe: # жива ли пода
           httpGet:
-            path: /
-            port: {{ .Values.container.port }}
+            path: {{ .Values.probe.path }}
+            port: {{ .Values.probe.port }}
           initialDelaySeconds: 1
           periodSeconds: 2

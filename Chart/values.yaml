@@ -1,9 +1,16 @@
+replicaCount: 1
 container:
   image: kuber-test
   port: 8080
+probe:
+  port: 8080
+  path: /ready
 
-replicaCount: 1
+service:
+  port: 8000       # Порт ПОДА
+  targetPort: 8080 # Порт СЕРВЕСА внутри пода
 
 ingress:
   host: "localhost"
   path: "/"
+  port: 8000

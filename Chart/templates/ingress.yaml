@@ -16,4 +16,4 @@ spec:
           service:
             name: {{ .Release.Name }}-kuber-service
             port:
-              number: 8000
+              number: {{ .Values.ingress.port }}
